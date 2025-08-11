@@ -1,6 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const LandingPage = () => {
+  // State to handle form inputs
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+
+  // Function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    // Here you can handle the submission, e.g. send data to an API
+    console.log('Username:', username);
+    console.log('Email:', email);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header Section */}
@@ -18,6 +30,45 @@ const LandingPage = () => {
             Start Reading
           </button>
         </div>
+      </section>
+
+      {/* Form Section */}
+      <section className="bg-white p-10">
+        <h3 className="text-2xl font-semibold text-center mb-6">Sign Up</h3>
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-all duration-300 w-full"
+          >
+            Sign Up
+          </button>
+        </form>
       </section>
 
       {/* Features Section */}
